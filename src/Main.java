@@ -23,17 +23,15 @@ public class Main {
 			nr = sc.nextInt();
 			System.out.print("inserire colonna: ");
 			nc = sc.nextInt();
-			
-			if (nr < 0 || nc < 0 || nr >= 3 || nc >= 3) { // check posizione
+			while (nr < 0 || nc < 0 || nr >= 3 || nc >= 3) {
 				System.out.println("posizione non valida");
-			    while(nr < 0 || nc < 0 || nr >= 3 || nc >= 3) {
-			    	System.out.print("inserire riga: ");
-					nr = sc.nextInt();
-					System.out.print("inserire colonna: ");
-					nc = sc.nextInt();			    	
-			    }
+				System.out.print("inserire riga: ");
+				nr = sc.nextInt();
+				System.out.print("inserire colonna: ");
+				nc = sc.nextInt();
 			}
-			else if (matrice[nr][nc] != " ")
+
+			if (matrice[nr][nc] != " ")
 				System.out.println("posizione occupata");
 			else {
 				if (giocatore == 1) {
@@ -55,21 +53,21 @@ public class Main {
 				System.out.println();
 			}
 
-			if ((matrice[nr][0] == "X" && matrice[nr][1] == "X" && matrice[nr][1] == "X") //condizioni vittoria x
+			if ((matrice[nr][0] == "X" && matrice[nr][1] == "X" && matrice[nr][1] == "X") // condizioni vittoria x
 					|| (matrice[0][nc] == "X" && matrice[1][nc] == "X" && matrice[2][nc] == "X")
 					|| (matrice[0][0] == "X" && matrice[1][1] == "X" && matrice[2][2] == "X")
 					|| (matrice[0][2] == "X" && matrice[1][1] == "X" && matrice[2][0] == "X")) {
 				System.out.println("giocatore 1 vince");
 				break;
+			} else if ((matrice[nr][0] == "0" && matrice[nr][1] == "0" && matrice[nr][1] == "0") // condizioni vittoria
+																									// 0
+					|| (matrice[0][nc] == "0" && matrice[1][nc] == "0" && matrice[2][nc] == "0")
+					|| (matrice[0][0] == "0" && matrice[1][1] == "0" && matrice[2][2] == "0")
+					|| (matrice[0][2] == "0" && matrice[1][1] == "0" && matrice[2][0] == "0")) {
+				System.out.println("giocatore 2 vince");
+				break;
 			}
-				else if((matrice[nr][0] == "0" && matrice[nr][1] == "0" && matrice[nr][1] == "0") //condizioni vittoria 0
-						|| (matrice[0][nc] == "0" && matrice[1][nc] == "0" && matrice[2][nc] == "0")
-						|| (matrice[0][0] == "0" && matrice[1][1] == "0" && matrice[2][2] == "0")
-						|| (matrice[0][2] == "0" && matrice[1][1] == "0" && matrice[2][0] == "0")) {
-					System.out.println("giocatore 2 vince");
-					break; 
-				}
-			
+
 		} while (counter < 9);
 		System.out.println("pareggio");
 
