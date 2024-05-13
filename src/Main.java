@@ -8,6 +8,7 @@ public class Main {
 		int nr, nc;
 		int counter = 0;
 		int giocatore = 1;
+		boolean vittoria=false;
 
 		// inizializzazione matrice con spazi vuoti
 		for (int i = 0; i < 3; i++) {
@@ -58,16 +59,20 @@ public class Main {
 					|| (matrice[0][0] == "X" && matrice[1][1] == "X" && matrice[2][2] == "X")
 					|| (matrice[0][2] == "X" && matrice[1][1] == "X" && matrice[2][0] == "X")) {
 				System.out.println("giocatore 1 vince");
+				vittoria=true;
 				break;
 			} else if ((matrice[nr][0] == "0" && matrice[nr][1] == "0" && matrice[nr][2] == "0") // cnd vittoria 0
 					|| (matrice[0][nc] == "0" && matrice[1][nc] == "0" && matrice[2][nc] == "0")
 					|| (matrice[0][0] == "0" && matrice[1][1] == "0" && matrice[2][2] == "0")
 					|| (matrice[0][2] == "0" && matrice[1][1] == "0" && matrice[2][0] == "0")) {
 				System.out.println("giocatore 2 vince");
+				vittoria=true;
 				break;
 			}
 
 		} while (counter < 9);
+		if(vittoria==false)
+			System.out.println("pareggio");
 		System.out.println("partita finita");
 
 	}// fine metodo
